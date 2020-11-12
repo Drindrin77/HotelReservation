@@ -1,0 +1,32 @@
+[
+	{
+		"id": 1,
+		"name": "Hotel1",
+		"address": "3 square Genevillier",
+		"rooms": [
+			{
+				"id": 1,
+				"name": "Room 11"
+			},
+			{
+				"id": 2,
+				"name": "Room 12"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"name": "Hotel2",
+		"address": "10 square Genevillier",
+		"rooms": [
+			{
+				"id": 1,
+				"name": "Room 21"
+			},
+			{
+				"id": 2,
+				"name": "Room 22"
+			}
+		]
+	}
+]
