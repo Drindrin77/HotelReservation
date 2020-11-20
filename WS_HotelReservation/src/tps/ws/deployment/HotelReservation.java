@@ -25,6 +25,8 @@ public class HotelReservation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
+		hotelResource.release();
+
 		return "";
 	}
 	
@@ -33,7 +35,7 @@ public class HotelReservation {
 		// Create the client resource  
 		ClientResource hotelResource = new ClientResource(baseURL+"/book");  
 		hotelResource.getReference().addQueryParameter("idClient", Integer.toString(idClient));
-
+		
 		try {
 			return hotelResource.get().getText();
 			
@@ -42,6 +44,7 @@ public class HotelReservation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
+		hotelResource.release();
 		return "";
 	}
 	
@@ -70,6 +73,7 @@ public class HotelReservation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
+		bookingResource.release();
 		return "";
 	}
 	
@@ -98,6 +102,8 @@ public class HotelReservation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
+		
+		bookingResource.release();
 		return "";
 	}
 

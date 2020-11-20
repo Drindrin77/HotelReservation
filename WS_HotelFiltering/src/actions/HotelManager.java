@@ -84,8 +84,10 @@ public class HotelManager {
 	public static ArrayList<Hotel> getAvailableHotels(Date arrivalDate, int nbNight, int nbRoom) {
 	
 		ArrayList<Hotel> availableHotels = new ArrayList<Hotel>();
+		int nbRoomAvailable;
 		for(Hotel hotel: hotels) {
-			if(getAvailableRooms(hotel, arrivalDate, nbNight).size()>=nbRoom) {
+			if((nbRoomAvailable = getAvailableRooms(hotel, arrivalDate, nbNight).size())>=nbRoom) {
+				hotel.setNbRoomAvailable(nbRoomAvailable);
 				availableHotels.add(hotel);
 			}
 		}

@@ -77,11 +77,10 @@ public class HotelReservationController implements Initializable {
 
 	@FXML
 	void searchHotels(ActionEvent event) {
-
+		hotelObservableList.clear();
+		//if setting available hotels is successful, set new observable list hotel
 		if(setAvailableHotels()) {			
 			setHotelTable();
-		}else {
-			hotelObservableList.clear();			
 		}
 	}
 
@@ -92,19 +91,13 @@ public class HotelReservationController implements Initializable {
 	}
 
 	private void setHotelTable() {
-		hotelObservableList.clear();
 		ArrayList<Hotel> hotels = hotelManager.getHotels();
 		if(hotels.size()==0) {
 			labelHotel.setText("Hotel not found");
 		}else {			
-			hotelObservableList.addAll(hotelManager.getHotels());
+			hotelObservableList.addAll(hotels);
 			labelHotel.setText("");
 		}
-	}
-
-	private void resetTables() {
-		setBookingTable();
-		setHotelTable();
 	}
 
 	private boolean isInputValuesEmpty() {
@@ -119,14 +112,17 @@ public class HotelReservationController implements Initializable {
 		if(isInputValuesEmpty()) {
 			labelHotel.setText("Veuillez remplir le formulaire");
 			return false;
-		}else {
+		}
+		
+		else {
 			try {
 				Date arrivalDate = DateHelper.localDatetoDate(dateArrivalDate.getValue());
 				int nbNight = Integer.parseInt(textNbNight.getText());
 				int nbRoom = Integer.parseInt(textNbRoom.getText());
 				hotelManager.getAvailableHotels(arrivalDate, nbNight, nbRoom);
-			
-			}catch(NumberFormatException e) {
+			}
+			//IF nbNight or nbRoom are not in number format
+			catch(NumberFormatException e) {
 				labelHotel.setText("Veuillez rentrer des données numériques");
 				return false;
 			}
@@ -182,9 +178,16 @@ public class HotelReservationController implements Initializable {
 							Date arrivalDate = DateHelper.localDatetoDate(dateArrivalDate.getValue());
 							int nbNight = Integer.parseInt(textNbNight.getText());
 							int nbRoom = Integer.parseInt(textNbRoom.getText());
+							
 							labelHotel.setText(hotelManager.bookHotel(hotel.getID(), arrivalDate, nbNight, nbRoom));
-							setAvailableHotels();
-							resetTables();
+							int nbRoomAvailable = hotel.getNbRoomAvailable();
+
+							//If there are not enough rooms to book again the same hotel
+							if(nbRoomAvailable-nbRoom<nbRoom) {
+								hotelObservableList.remove(getIndex());
+							}
+							hotel.setNbRoomAvailable(nbRoomAvailable-nbRoom);
+							setBookingTable();
 						});
 					}
 
@@ -213,7 +216,7 @@ public class HotelReservationController implements Initializable {
 				final TableCell<Booking, Void> cell = new TableCell<Booking, Void>() {
 					private final Button btn = new Button("Annuler");
 					{
-						// BOOKING
+						// CANCEL BOOKING
 						btn.setOnAction((ActionEvent event) -> {
 							Booking booking = getTableView().getItems().get(getIndex());
 							labelBooking.setText(hotelManager.cancelBooking(booking));

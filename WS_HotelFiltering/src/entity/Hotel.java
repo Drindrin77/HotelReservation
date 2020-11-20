@@ -8,6 +8,7 @@ public class Hotel {
 	private String name;
 	private String address;
 	private ArrayList<Room> rooms;
+	private int nbRoomAvailable;
 	
 	public Hotel() {
 		rooms = new ArrayList<Room>();
@@ -35,6 +36,12 @@ public class Hotel {
 	}
 	public void setRooms(ArrayList<Room> rooms) {
 		this.rooms = rooms;
+	}
+	public int getNbRoomAvailable() {
+		return nbRoomAvailable;
+	}
+	public void setNbRoomAvailable(int nbRoomAvailable) {
+		this.nbRoomAvailable = nbRoomAvailable;
 	}
 
 }

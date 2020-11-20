@@ -39,6 +39,8 @@ public class JSONHelper {
 			hotel.setID(Integer.parseInt(hotelObject.get("idHotel").toString()));
 			hotel.setAddress((String) hotelObject.get("address"));
 			hotel.setName((String) hotelObject.get("name"));
+			hotel.setNbRoomAvailable(Integer.parseInt(hotelObject.get("nbRoom").toString()));
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

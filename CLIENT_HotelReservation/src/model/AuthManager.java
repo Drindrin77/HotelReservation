@@ -24,6 +24,7 @@ public class AuthManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		authResource.release();
 		return result;
 	}
 }

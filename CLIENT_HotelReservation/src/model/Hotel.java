@@ -4,6 +4,7 @@ public class Hotel {
 	private int ID;
 	private String address;
 	private String name;
+	private int nbRoomAvailable;
 	
 	public int getID() {
 		return ID;
@@ -22,5 +23,11 @@ public class Hotel {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getNbRoomAvailable() {
+		return nbRoomAvailable;
+	}
+	public void setNbRoomAvailable(int nbRoomAvailable) {
+		this.nbRoomAvailable = nbRoomAvailable;
 	}
 }

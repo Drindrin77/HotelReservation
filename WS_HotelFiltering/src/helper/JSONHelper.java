@@ -55,6 +55,7 @@ public class JSONHelper {
 				hotelObject.put("idHotel", h.getID());
 				hotelObject.put("name", h.getName());
 				hotelObject.put("address", h.getAddress());
+				hotelObject.put("nbRoom", h.getNbRoomAvailable());
 				hotelList.put(hotelObject);
 			}
 

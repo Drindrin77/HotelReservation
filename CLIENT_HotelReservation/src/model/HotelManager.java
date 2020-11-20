@@ -75,13 +75,12 @@ public class HotelManager {
 			bookHotels.setIdClient(this.idClient);
 			bookHotels.setIdHotel(idHotel);
 			
-			
-			//TODO: CHECK RESULT
 			String result = stub.bookHotel(bookHotels).get_return();
 			
-			Booking bookHotel = new Booking(idHotel, nbRoom, arrivalDate, DateHelper.addDays(arrivalDate, nbNight));
-			this.bookings.add(bookHotel);
-			
+			if(result.equals("Reservation successful")) {
+				Booking bookHotel = new Booking(idHotel, nbRoom, arrivalDate, DateHelper.addDays(arrivalDate, nbNight));
+				this.bookings.add(bookHotel);				
+			}
 			return result; 
 			
 		} catch (AxisFault e) {
@@ -104,10 +103,11 @@ public class HotelManager {
 			cancelBooking.setIdHotel(booking.getIdHotel());
 			cancelBooking.setNbRoom(booking.getNbRoom());
 			
-			//TODO: CHECK RESULT
 			String result = stub.cancelBooking(cancelBooking).get_return();
 			
-			bookings.remove(booking);
+			if(result.equals("Cancellation successful")) {				
+				bookings.remove(booking);
+			}
 			
 			return result; 
 			

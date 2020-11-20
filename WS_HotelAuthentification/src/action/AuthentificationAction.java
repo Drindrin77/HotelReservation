@@ -33,6 +33,7 @@ public class AuthentificationAction {
 		}
 	}
 	
+	//If user exists, return id user
 	public static Optional<Integer> userExist(String username, String password) {
 		for(User user: users) {
 			if(user.getPassword().equals(password) && user.getUsername().equals(username)) {
