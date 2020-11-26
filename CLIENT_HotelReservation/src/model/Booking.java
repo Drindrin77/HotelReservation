@@ -49,6 +49,9 @@ public class Booking {
 	public void setNbRoom(int nbRoom) {
 		this.nbRoom = nbRoom;
 	}
+	public void addRoom(int nbRoom) {
+		this.nbRoom += nbRoom;
+	}
 
 	@Override
 	public int hashCode() {

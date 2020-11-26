@@ -79,7 +79,11 @@ public class HotelManager {
 			
 			if(result.equals("Reservation successful")) {
 				Booking bookHotel = new Booking(idHotel, nbRoom, arrivalDate, DateHelper.addDays(arrivalDate, nbNight));
-				this.bookings.add(bookHotel);				
+				if(this.bookings.contains(bookHotel)) {
+					this.bookings.get(this.bookings.indexOf(bookHotel)).addRoom(nbRoom);
+				}else {					
+					this.bookings.add(bookHotel);				
+				}
 			}
 			return result; 
 			

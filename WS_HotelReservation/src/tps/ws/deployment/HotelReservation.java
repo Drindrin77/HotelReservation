@@ -19,7 +19,9 @@ public class HotelReservation {
 		hotelResource.getReference().addQueryParameter("nbRoom", Integer.toString(nbRoom));
 
 		try {
-			return hotelResource.get().getText();
+			String result =  hotelResource.get().getText();
+			hotelResource.release();
+			return result;
 		} catch (ResourceException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -37,14 +39,15 @@ public class HotelReservation {
 		hotelResource.getReference().addQueryParameter("idClient", Integer.toString(idClient));
 		
 		try {
-			return hotelResource.get().getText();
 			
+			String result =  hotelResource.get().getText();
+			hotelResource.release();
+			return result;
 		} catch (ResourceException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
-		hotelResource.release();
 		return "";
 	}
 	
@@ -62,6 +65,8 @@ public class HotelReservation {
 
 		try {
 			String resultBooking = bookingResource.post(form).getText();
+			bookingResource.release();
+
 			if(resultBooking.equals("true")) {
 				return "Reservation successful";
 			}
@@ -73,7 +78,6 @@ public class HotelReservation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}  
-		bookingResource.release();
 		return "";
 	}
 	
@@ -91,6 +95,8 @@ public class HotelReservation {
 
 		try {
 			String resultBooking = bookingResource.post(form).getText();
+			bookingResource.release();
+
 			if(resultBooking.equals("true")) {
 				return "Cancellation successful";
 			}
@@ -103,7 +109,6 @@ public class HotelReservation {
 			e.printStackTrace();
 		}  
 		
-		bookingResource.release();
 		return "";
 	}
 
