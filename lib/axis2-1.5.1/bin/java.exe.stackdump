@@ -1,0 +1,4 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=610C17E9
+eax=00000000 ebx=00000001 ecx=00000000 edx=000006C8 esi=00000000 edi=18C2CCC8
+ebp=18C2CB04 esp=18C2CADC program=C:\WINDOWS\system32\java.exe, pid 6112, thread unknown (0xB78)
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023

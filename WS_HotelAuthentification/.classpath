@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/drindrin/Documents/Java_Librairies/restlet-jee-2.0.6/lib/org.restlet.jar"/>
-	<classpathentry kind="lib" path="/home/drindrin/Documents/Java_Librairies/org.json-chargebee-1.0.jar"/>
+	<classpathentry kind="lib" path="/home/drindrin/eclipse-workspace/lib/org.restlet.jar"/>
+	<classpathentry kind="lib" path="/home/drindrin/eclipse-workspace/lib/org.json-chargebee-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
