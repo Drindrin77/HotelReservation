@@ -4,12 +4,11 @@ Versions des technologies (les mêmes que dans les TP, inclus dans le dossier li
 - **Java**: oracle 8
 - **Axis**: axis2-1.5.1
 - **Tomcat**: apache v.7
-- **Javafx**: jxrft.jar inclus dans la version du java 8
+- **Javafx**: jfxrt.jar inclus dans la version du java 8
 - **Restlet**: restlet-jee-2.0.6
 - **Json**: org.json-chargebee-1.0
 
 Inclure les projets sur Eclipse JEE
-Les librairies sont inclus dans le dossier /lib, faire attention aux chemins des librairies dans le build path
 
 Lancez **WS_HotelReservation** (WS SOAP) sur le serveur tomcat inclus dans le dossier Servers (port 8081).
 
