@@ -86,15 +86,14 @@ public class HotelReservation {
 		// Create the client resource  
 		ClientResource bookingResource = new ClientResource(baseURL+"/cancel");  
  
-		Form form = new Form();  
-		form.add("arrivalDate", arrivalDate);  
-		form.add("endDate", endDate);  
-		form.add("nbRoom", Integer.toString(nbRoom));  
-		form.add("idClient", Integer.toString(idClient));  
-		form.add("idHotel", Integer.toString(idHotel));  
+		bookingResource.getReference().addQueryParameter("idClient", Integer.toString(idClient));
+		bookingResource.getReference().addQueryParameter("idHotel", Integer.toString(idHotel));
+		bookingResource.getReference().addQueryParameter("nbRoom", Integer.toString(nbRoom));
+		bookingResource.getReference().addQueryParameter("arrivalDate", arrivalDate);
+		bookingResource.getReference().addQueryParameter("endDate", endDate);
 
 		try {
-			String resultBooking = bookingResource.post(form).getText();
+			String resultBooking = bookingResource.delete().getText();
 			bookingResource.release();
 
 			if(resultBooking.equals("true")) {
